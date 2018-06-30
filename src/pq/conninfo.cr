@@ -65,7 +65,7 @@ module PQ
         end
       end
 
-      initialize(uri.host, uri.path, uri.user, uri.password, uri.port, sslmode)
+      initialize(uri.host.try {|h| URI.unescape(h)}, uri.path, uri.user, uri.password, uri.port, sslmode)
     end
 
     # Initialize with a `Hash`
